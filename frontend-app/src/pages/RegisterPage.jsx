@@ -5,14 +5,17 @@ import { registerResquest } from '../api/auth';
 
     // It generates and manage the Usestate for us
     const {register, handleSubmit} = useForm();
+
+    const onSubmit = handleSubmit(async (values) => {
+        console.log(values);
+         const res = await registerResquest(values);
+         console.log(res);
+        })
+
   return (
     <div>
         <h1>Register</h1>
-        <form className='form-users' onSubmit={handleSubmit(async (values) => {
-            console.log(values);
-             const res = await registerResquest(values);
-             console.log(res);
-        })}>
+        <form className='form-users' onSubmit={onSubmit}>
             <label htmlFor="Usename"></label>
             <input type="text" {...register("username", {required:true})} placeholder='Username'/>
             <label htmlFor="Email"></label>
