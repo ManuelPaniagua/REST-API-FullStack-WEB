@@ -60,3 +60,9 @@ h2{
 span{
   color: #646cffb6;
 }
+
+.form-users{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
