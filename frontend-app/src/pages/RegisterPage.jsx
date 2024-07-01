@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { registerResquest } from '../api/auth';
 
  const RegisterPage  = () => {
 
@@ -7,8 +8,10 @@ import { useForm } from 'react-hook-form';
   return (
     <div>
         <h1>Register</h1>
-        <form className='form-users' onSubmit={handleSubmit((values) => {
+        <form className='form-users' onSubmit={handleSubmit(async (values) => {
             console.log(values);
+             const res = await registerResquest(values);
+             console.log(res);
         })}>
             <label htmlFor="Usename"></label>
             <input type="text" {...register("username", {required:true})} placeholder='Username'/>
