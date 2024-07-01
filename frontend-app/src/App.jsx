@@ -5,8 +5,8 @@ import Home from './pages/Home';
 import CreateTasks from './pages/CreateTasks';
 import DeleteTask from './pages/DeleteTask';
 import EditTask from './pages/EditTask';
-import { RegisterPage } from './pages/RegisterPage';
-import { LoginPage } from './pages/LoginPage';
+import  RegisterPage from './pages/RegisterPage';
+import  LoginPage  from './pages/LoginPage';
 
 const App = () => {
   return (
