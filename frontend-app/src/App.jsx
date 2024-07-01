@@ -7,9 +7,11 @@ import DeleteTask from './pages/DeleteTask';
 import EditTask from './pages/EditTask';
 import  RegisterPage from './pages/RegisterPage';
 import  LoginPage  from './pages/LoginPage';
+import { AuthProvider } from './context/AuthContext';
 
 const App = () => {
   return (
+    <AuthProvider>
     <Routes>
       <Route path='/' element={<Home />}></Route>
       <Route path='/task/new' element={<CreateTasks />}></Route>
@@ -18,6 +20,7 @@ const App = () => {
       <Route path='/register' element={<RegisterPage />}></Route>
       <Route path='/login' element={<LoginPage />}></Route>
     </Routes>
+    </AuthProvider>
   );
 };
 
