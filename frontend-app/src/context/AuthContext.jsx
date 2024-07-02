@@ -23,7 +23,10 @@ export const AuthProvider = ({ children }) => {
             console.log(res);
         } catch (error) {
             // in the backend are set the errors
-            setErrors(error.response.data);
+            if (Array.isArray(error.response.data)) {
+                return setErrors(error.response.data);
+            }
+            setErrors([error.response.data.message]);
         }
     };
 
@@ -32,7 +35,12 @@ export const AuthProvider = ({ children }) => {
             const res = await loginRequest(user);
             console.log(res);
         } catch (error) {
-            setErrors(error.response.data);
+            console.log(error);
+            // in the backend are set the errors
+            if (Array.isArray(error.response.data)) {
+                return setErrors(error.response.data);
+            }
+            setErrors([error.response.data.message]);
         }
     };
 
