@@ -22,15 +22,21 @@ function LoginPage() {
                     {...register('email', { required: true })}
                     placeholder='Email'
                 />
-                {errors.email && <p>Email is Required</p>}
+                {errors.email && (
+                    <p className='errors-form'>Email is Required</p>
+                )}
                 <input
                     type='password'
                     {...register('password', { required: true })}
                     placeholder='Password'
                 />
-                {errors.password && <p>Password is Required</p>}
+                {errors.password && (
+                    <p className='errors-form'>Password is Required</p>
+                )}
                 {signinErrors.map((error, i) => (
-                    <div key={i}>{error}</div>
+                    <div key={i} className='errors-form'>
+                        {error}
+                    </div>
                 ))}
                 <button type='submit'>Login</button>
             </form>
