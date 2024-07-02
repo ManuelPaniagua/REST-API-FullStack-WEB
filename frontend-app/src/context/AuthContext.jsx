@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import { registerResquest, loginRequest } from '../api/auth';
 
 export const AuthContext = createContext();
@@ -36,6 +36,16 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    // to delete the displayed error message after a time
+    useEffect(() => {
+        if (errors.length > 0) {
+            const timer = setTimeout(() => {
+                setErrors([]);
+            }, 5000);
+            // to delete the time if not use
+            return () => clearTimeout(timer);
+        }
+    }, [errors]);
     return (
         <AuthContext.Provider
             value={{

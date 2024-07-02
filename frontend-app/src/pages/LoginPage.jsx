@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
-
+import { Link } from 'react-router-dom';
 function LoginPage() {
     const {
         register,
@@ -40,6 +40,10 @@ function LoginPage() {
                 ))}
                 <button type='submit'>Login</button>
             </form>
+
+            <p>
+                Do not have an account ? <Link to='/register'>Signin</Link>
+            </p>
         </div>
     );
 }
