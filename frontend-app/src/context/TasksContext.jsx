@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const TaskContext = createContext();
 
@@ -10,6 +10,17 @@ export const useTasks = () => {
     return context;
 };
 
+// to save the tasks in backend
+
 export function TaskProvider({ children }) {
-    return <TaskContext.Provider value={{}}>{children}</TaskContext.Provider>;
+    //To save tasks in frontend
+    const [tasks, setTasks] = useState([]);
+    return (
+        <TaskContext.Provider
+            value={{
+                tasks,
+            }}>
+            {children}
+        </TaskContext.Provider>
+    );
 }
