@@ -12,6 +12,7 @@ import { AuthProvider } from './context/AuthContext';
 import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './ProtectedRoute';
 import { TaskProvider } from './context/TasksContext';
+import TasksPage from './pages/TasksPage';
 
 const App = () => {
     return (
@@ -23,6 +24,7 @@ const App = () => {
                     <Route path='/login' element={<LoginPage />}></Route>
 
                     <Route element={<ProtectedRoute />}>
+                        <Route path='/task' element={<TasksPage />}></Route>
                         <Route
                             path='/task/new'
                             element={<TaskFormPage />}></Route>
