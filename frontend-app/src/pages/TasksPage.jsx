@@ -9,7 +9,15 @@ function TasksPage() {
     useEffect(() => {
         getTasks();
     }, []);
-    if (tasks.length === 0) return <h1>No Tasks</h1>;
+    if (tasks.length === 0)
+        return (
+            <div>
+                <h1>No Tasks</h1>
+                <Link to='/task/new'>
+                    <button>Add new Task</button>
+                </Link>
+            </div>
+        );
 
     return (
         <div>
