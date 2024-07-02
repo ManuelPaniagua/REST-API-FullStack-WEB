@@ -9,6 +9,7 @@ import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import { AuthProvider } from './context/AuthContext';
 import ProfilePage from './pages/ProfilePage';
+import ProtectedRoute from './ProtectedRoute';
 
 const App = () => {
     return (
@@ -18,10 +19,14 @@ const App = () => {
                 <Route path='/register' element={<RegisterPage />}></Route>
                 <Route path='/login' element={<LoginPage />}></Route>
 
-                <Route path='/task/new' element={<CreateTasks />}></Route>
-                <Route path='/task/delete/:id' element={<DeleteTask />}></Route>
-                <Route path='/task/edit/:id' element={<EditTask />}></Route>
-                <Route path='/profile' element={<ProfilePage />}></Route>
+                <Route element={<ProtectedRoute />}>
+                    <Route path='/task/new' element={<CreateTasks />}></Route>
+                    <Route
+                        path='/task/delete/:id'
+                        element={<DeleteTask />}></Route>
+                    <Route path='/task/edit/:id' element={<EditTask />}></Route>
+                    <Route path='/profile' element={<ProfilePage />}></Route>
+                </Route>
             </Routes>
         </AuthProvider>
     );
