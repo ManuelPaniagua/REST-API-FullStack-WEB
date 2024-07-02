@@ -69,12 +69,12 @@ export const AuthProvider = ({ children }) => {
                 console.log('token not found');
                 setIsAuthenticated(false);
                 setLoading(false);
-                return;
+                return setUser(null);
             }
 
             try {
+                // Sending token to the backend to compare
                 const res = await verifyTokenRequest(token);
-                console.log(res);
                 if (!res.data) {
                     setIsAuthenticated(false);
                     setLoading(false);
@@ -85,6 +85,7 @@ export const AuthProvider = ({ children }) => {
                 setLoading(false);
             } catch (error) {
                 setIsAuthenticated(false);
+                setUser(null);
                 setLoading(false);
             }
         };
