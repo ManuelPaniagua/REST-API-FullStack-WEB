@@ -17,7 +17,7 @@ const TaskSingleCard = ({ task }) => {
                     <MdOutlineDelete className='icon-del' />
                 </Link>
                 <Link
-                    to={`/task/edit/${task.id}`}
+                    to={`/task/new/${task.id}`}
                     className={'link-icon-update'}>
                     <AiOutlineEdit className='icon-update' />
                 </Link>

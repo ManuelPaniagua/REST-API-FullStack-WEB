@@ -5,11 +5,10 @@ import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { useTasks } from '../context/TasksContext';
-import { getTaskRequest, updateTaskRequest } from '../api/task';
 
 const EditTask = () => {
     const { getTask } = useTasks();
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, setValue } = useForm();
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const navigate = useNavigate();
@@ -17,7 +16,14 @@ const EditTask = () => {
     const { enqueueSnackbar } = useSnackbar();
 
     useEffect(() => {
-        getTask(id);
+        async function loadTask() {
+            const task = await getTask(id);
+            console.log(id);
+            console.log(task);
+            setValue('name', task.name);
+            setValue('description', task.description);
+        }
+        loadTask();
     }, []);
 
     const handleEditTask = () => {};
@@ -26,19 +32,11 @@ const EditTask = () => {
             <h1>Edit Task</h1>
             <div className='addingTask'>
                 <label>Name of the Task</label>
-                <input
-                    type='text'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
+                <input type='text' value={name} />
             </div>
             <div className='addingTask'>
                 <label>Description</label>
-                <textarea
-                    type='text'
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
+                <textarea type='text' value={description} />
             </div>
             <button onClick={handleEditTask}>Add Task</button>
         </div>

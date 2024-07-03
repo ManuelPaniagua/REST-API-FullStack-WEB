@@ -31,6 +31,9 @@ const App = () => {
                             path='/task/new'
                             element={<TaskFormPage />}></Route>
                         <Route
+                            path='/task/new/:id'
+                            element={<TaskFormPage />}></Route>
+                        <Route
                             path='/task/delete/:id'
                             element={<DeleteTask />}></Route>
                         <Route
