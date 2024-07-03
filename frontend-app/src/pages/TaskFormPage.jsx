@@ -41,14 +41,14 @@ function TaskFormPage() {
             <h1>Create Task</h1>
             <form onSubmit={onSubmit}>
                 <div className='addingTask'>
-                    <label>Name of the Task</label>
+                    <label htmlFor='name'>Name of the Task</label>
                     <input
                         type='text'
                         name='name'
                         {...register('name')}
                         autoFocus
                     />
-                    <label>Description</label>
+                    <label htmlFor='description'>Description</label>
                     <textarea
                         name='description'
                         rows='3'

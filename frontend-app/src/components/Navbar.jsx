@@ -5,7 +5,9 @@ function Navbar() {
     const { isAuthenticated, logout, user } = useAuth();
     return (
         <nav className='navbar'>
-            <h1>Task Manager</h1>
+            <Link to={isAuthenticated ? '/task' : '/'}>
+                <h1>Task Manager</h1>
+            </Link>
             <ul className='navbar__list'>
                 {isAuthenticated ? (
                     <>
