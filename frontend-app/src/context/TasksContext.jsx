@@ -37,8 +37,11 @@ export function TaskProvider({ children }) {
 
     // to delete
     const deleteTask = async (id) => {
-        const res = await deleteTaskRequest(id);
-        console.log(res);
+        try {
+            const res = await deleteTaskRequest(id);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
