@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 const RegisterPage = () => {
