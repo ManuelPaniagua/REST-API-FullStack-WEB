@@ -82,7 +82,7 @@ span{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color:black;
+  background-color:rgb(34, 17, 17);
   width: 100%;
   
 }

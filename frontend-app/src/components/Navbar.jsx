@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 function Navbar() {
     const { isAuthenticated, logout, user } = useAuth();
-
+    console.log(user);
     return (
         <nav className='navbar'>
             <h1>Task Manager</h1>
             <ul className='navbar__list'>
                 {isAuthenticated ? (
                     <>
-                        <li className='navbar__option'>Welcome User</li>
+                        <li className='navbar__option'>
+                            Welcome {user.username}
+                        </li>
                         <Link
                             to='/'
                             onClick={() => {
