@@ -70,7 +70,6 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const checkLogin = async () => {
             const token = Cookies.get('token');
-            console.log(token);
             if (!token) {
                 console.log('token not found');
                 setIsAuthenticated(false);
