@@ -81,17 +81,13 @@ export const AuthProvider = ({ children }) => {
             try {
                 // Sending token to the backend to compare
                 const res = await verifyTokenRequest(token);
-                if (!res.data) {
-                    setIsAuthenticated(false);
-                    setLoading(false);
-                    return;
-                }
+                console.log(res);
+                if (!res.data) return setIsAuthenticated(false);
                 setIsAuthenticated(true);
                 setUser(res.data);
                 setLoading(false);
             } catch (error) {
                 setIsAuthenticated(false);
-                setUser(null);
                 setLoading(false);
             }
         };
