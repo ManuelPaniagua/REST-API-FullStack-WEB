@@ -2,10 +2,11 @@ import { useForm } from 'react-hook-form';
 import { useTasks } from '../context/TasksContext';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-
+import { useSnackbar } from 'notistack';
 function TaskFormPage() {
     const { createTask, getTask, updateTask } = useTasks();
     const navigate = useNavigate();
+    const { enqueueSnackbar } = useSnackbar();
     const { id } = useParams();
     const {
         register,
@@ -17,9 +18,13 @@ function TaskFormPage() {
     const onSubmit = handleSubmit((data) => {
         if (id) {
             updateTask(id, data);
+            enqueueSnackbar('Task edited successfully', { variant: 'success' });
             navigate('/task');
         } else {
             createTask(data);
+            enqueueSnackbar('Task created successfully', {
+                variant: 'success',
+            });
             navigate('/task');
         }
     });
@@ -38,7 +43,8 @@ function TaskFormPage() {
 
     return (
         <div>
-            <h1>Create Task</h1>
+            {id ? <h1>Edit Task</h1> : <h1>Create Task</h1>}
+
             <form onSubmit={onSubmit}>
                 <div className='addingTask'>
                     {errors.name && (

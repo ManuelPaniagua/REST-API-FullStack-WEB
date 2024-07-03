@@ -11,8 +11,9 @@ const DeleteTask = () => {
     const handleDeleteTask = () => {
         try {
             deleteTask(id);
-            enqueueSnackbar('Task deleted successfully'),
-                { variant: 'success' };
+            enqueueSnackbar('Task deleted successfully', {
+                variant: 'success',
+            });
             navigate('/task');
             console.log('task deleted');
         } catch (error) {
