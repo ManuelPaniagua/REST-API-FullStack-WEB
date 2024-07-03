@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 function Navbar() {
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, logout, user } = useAuth();
+
     return (
         <nav className='navbar'>
             <h1>Task Manager</h1>
@@ -10,7 +11,12 @@ function Navbar() {
                 {isAuthenticated ? (
                     <>
                         <li className='navbar__option'>Welcome User</li>
-                        <Link to='/logout' className='navbar__link'>
+                        <Link
+                            to='/'
+                            onClick={() => {
+                                logout();
+                            }}
+                            className='navbar__link'>
                             Logout
                         </Link>
                     </>
