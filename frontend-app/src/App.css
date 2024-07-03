@@ -87,7 +87,8 @@ span{
   justify-content: space-between;
   background-color:rgb(34, 17, 17);
   width: 100%;
-  z-index: -1;
+  height: 150px;
+  
 }
 
 .navbar h1{
@@ -107,4 +108,11 @@ span{
 .navbar__link{
   font-size: 16px;
   color: #fff;
+}
+.navbar__link--logout{
+  color: #888383;
+  border: 1px solid #888383;
+  border-radius: 3px;
+  padding: 5px;
+  cursor: pointer;
 }

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 function Navbar() {
@@ -18,7 +19,7 @@ function Navbar() {
                             onClick={() => {
                                 logout();
                             }}
-                            className='navbar__link'>
+                            className='navbar__link navbar__link--logout'>
                             Logout
                         </Link>
                     </>
