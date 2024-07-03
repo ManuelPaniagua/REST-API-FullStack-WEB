@@ -3,6 +3,8 @@ import {
     createTaskRequest,
     getTasksRequest,
     deleteTaskRequest,
+    updateTaskRequest,
+    getTaskRequest,
 } from '../api/task';
 
 const TaskContext = createContext();
@@ -16,10 +18,10 @@ export const useTasks = () => {
 };
 
 export function TaskProvider({ children }) {
-    //To save tasks in frontend
+    // To save tasks in frontend
     const [tasks, setTasks] = useState([]);
 
-    //to get tasks
+    // to get all  tasks
     const getTasks = async (task) => {
         try {
             const res = await getTasksRequest(task);
@@ -29,16 +31,36 @@ export function TaskProvider({ children }) {
         }
     };
 
+    // to get one task by id
+    const getTask = async (id) => {
+        const res = await getTaskRequest(id);
+        console.log(res);
+    };
+
     // to save the tasks in backend
     const createTask = async (task) => {
-        const res = await createTaskRequest(task);
-        console.log(res);
+        try {
+            const res = await createTaskRequest(task);
+            console.log(res);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     // to delete
     const deleteTask = async (id) => {
         try {
             await deleteTaskRequest(id);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    // to update
+    const updateTask = async (id) => {
+        try {
+            const res = await updateTaskRequest(id);
+            console.log(res);
         } catch (error) {
             console.log(error);
         }
@@ -51,6 +73,8 @@ export function TaskProvider({ children }) {
                 createTask,
                 getTasks,
                 deleteTask,
+                updateTask,
+                getTask,
             }}>
             {children}
         </TaskContext.Provider>
