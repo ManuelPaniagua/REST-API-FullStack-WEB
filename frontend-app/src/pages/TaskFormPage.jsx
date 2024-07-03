@@ -41,11 +41,16 @@ function TaskFormPage() {
             <h1>Create Task</h1>
             <form onSubmit={onSubmit}>
                 <div className='addingTask'>
+                    {errors.name && (
+                        <p className='errors-form'>
+                            Name of the task is Required
+                        </p>
+                    )}
                     <label htmlFor='name'>Name of the Task</label>
                     <input
                         type='text'
                         name='name'
-                        {...register('name')}
+                        {...register('name', { required: true })}
                         autoFocus
                     />
                     <label htmlFor='description'>Description</label>

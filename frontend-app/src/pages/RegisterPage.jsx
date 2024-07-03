@@ -34,19 +34,25 @@ const RegisterPage = () => {
                     {...register('username', { required: true })}
                     placeholder='Username'
                 />
-                {errors.username && <p>Username is Required</p>}
+                {errors.username && (
+                    <p className='errors-form'>Username is Required</p>
+                )}
                 <input
                     type='email'
                     {...register('email', { required: true })}
                     placeholder='Email'
                 />
-                {errors.email && <p>Email is Required</p>}
+                {errors.email && (
+                    <p className='errors-form'>Email is Required</p>
+                )}
                 <input
                     type='password'
                     {...register('password', { required: true })}
                     placeholder='Password'
                 />
-                {errors.password && <p>Password is Required</p>}
+                {errors.password && (
+                    <p className='errors-form'>Password is Required</p>
+                )}
                 <button type='submit'>Register</button>
             </form>
             <p>
