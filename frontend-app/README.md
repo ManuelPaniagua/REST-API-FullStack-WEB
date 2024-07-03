@@ -14,4 +14,8 @@ Currently, two official plugins are available:
  # Run
  npm run dev
 
+
+
+ Learned from and others
+https://github.com/fazt/mern-crud-auth
  

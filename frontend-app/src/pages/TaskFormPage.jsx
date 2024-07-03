@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function TaskFormPage() {
-    const { createTask, getTask } = useTasks();
+    const { createTask, getTask, updateTask } = useTasks();
     const navigate = useNavigate();
-    const params = useParams();
+    const { id } = useParams();
     const {
         register,
         setValue,
@@ -15,14 +15,19 @@ function TaskFormPage() {
     } = useForm();
 
     const onSubmit = handleSubmit((data) => {
-        createTask(data);
-        navigate('/task');
+        if (id) {
+            updateTask(id, data);
+            navigate('/task');
+        } else {
+            createTask(data);
+            navigate('/task');
+        }
     });
 
     useEffect(() => {
         const loadTask = async () => {
-            if (params.id) {
-                const task = await getTask(params.id);
+            if (id) {
+                const task = await getTask(id);
                 setValue('name', task.name);
                 setValue('description', task.description);
                 // setValue("completed", task.completed);
