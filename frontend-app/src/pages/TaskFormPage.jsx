@@ -1,26 +1,67 @@
 import { useForm } from 'react-hook-form';
 import { useTasks } from '../context/TasksContext';
-import { createTaskRequest } from '../api/task';
-import { useNavigate } from 'react-router-dom';
-
+import { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 function TaskFormPage() {
-    const { register, handleSubmit } = useForm();
-    const { createTask } = useTasks();
+    const { createTask, getTask, updateTask } = useTasks();
     const navigate = useNavigate();
+    const { enqueueSnackbar } = useSnackbar();
+    const { id } = useParams();
+    const {
+        register,
+        setValue,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
     const onSubmit = handleSubmit((data) => {
-        createTask(data);
-        navigate('/task');
+        if (id) {
+            updateTask(id, data);
+            enqueueSnackbar('Task edited successfully', { variant: 'success' });
+            navigate('/task');
+        } else {
+            createTask(data);
+            enqueueSnackbar('Task created successfully', {
+                variant: 'success',
+            });
+            navigate('/task');
+        }
     });
+
+    useEffect(() => {
+        const loadTask = async () => {
+            if (id) {
+                const task = await getTask(id);
+                setValue('name', task.name);
+                setValue('description', task.description);
+                // setValue("completed", task.completed);
+            }
+        };
+        loadTask();
+    }, []);
+
     return (
         <div>
-            <h1>Create Task</h1>
+            {id ? <h1>Edit Task</h1> : <h1>Create Task</h1>}
+
             <form onSubmit={onSubmit}>
                 <div className='addingTask'>
-                    <label>Name of the Task</label>
-                    <input type='text' {...register('name')} autoFocus />
-                    <label>Description</label>
+                    {errors.name && (
+                        <p className='errors-form'>
+                            Name of the task is Required
+                        </p>
+                    )}
+                    <label htmlFor='name'>Name of the Task</label>
+                    <input
+                        type='text'
+                        name='name'
+                        {...register('name', { required: true })}
+                        autoFocus
+                    />
+                    <label htmlFor='description'>Description</label>
                     <textarea
+                        name='description'
                         rows='3'
                         {...register('description')}
                         id=''></textarea>

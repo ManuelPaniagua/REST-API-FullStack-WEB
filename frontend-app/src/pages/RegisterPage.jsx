@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 const RegisterPage = () => {
@@ -15,7 +15,7 @@ const RegisterPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isAuthenticated) navigate('/');
+        if (isAuthenticated) navigate('/task');
     }, [isAuthenticated]);
 
     const onSubmit = handleSubmit(async (values) => {
@@ -34,19 +34,25 @@ const RegisterPage = () => {
                     {...register('username', { required: true })}
                     placeholder='Username'
                 />
-                {errors.username && <p>Username is Required</p>}
+                {errors.username && (
+                    <p className='errors-form'>Username is Required</p>
+                )}
                 <input
                     type='email'
                     {...register('email', { required: true })}
                     placeholder='Email'
                 />
-                {errors.email && <p>Email is Required</p>}
+                {errors.email && (
+                    <p className='errors-form'>Email is Required</p>
+                )}
                 <input
                     type='password'
                     {...register('password', { required: true })}
                     placeholder='Password'
                 />
-                {errors.password && <p>Password is Required</p>}
+                {errors.password && (
+                    <p className='errors-form'>Password is Required</p>
+                )}
                 <button type='submit'>Register</button>
             </form>
             <p>

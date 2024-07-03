@@ -31,9 +31,11 @@
   .link-icon-del{
     align-self: flex-start;
     color: rgba(244, 134, 134, 0.694);
+    font-size: 18px;
   }  .link-icon-update{
     align-self: flex-end;
     color: #646cffb3;
+    font-size: 18px;
   }
 
   .icon-del:hover{
@@ -71,7 +73,7 @@ span{
   width: 100%;
   color: #fff;
   margin: 0 1px;
-  font-size: 10px;
+  font-size: 16px;
 }
 
 /* Navbar */
