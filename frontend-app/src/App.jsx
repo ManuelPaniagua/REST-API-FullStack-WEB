@@ -13,11 +13,13 @@ import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './ProtectedRoute';
 import { TaskProvider } from './context/TasksContext';
 import TasksPage from './pages/TasksPage';
+import Navbar from './components/Navbar';
 
 const App = () => {
     return (
         <AuthProvider>
             <TaskProvider>
+                <Navbar />
                 <Routes>
                     <Route path='/' element={<Home />}></Route>
                     <Route path='/register' element={<RegisterPage />}></Route>

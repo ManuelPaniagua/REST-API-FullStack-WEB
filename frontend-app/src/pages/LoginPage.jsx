@@ -20,7 +20,7 @@ function LoginPage() {
 
     return (
         <div>
-            <div>Login</div>
+            <h1>Login</h1>
             <form className='form-users' onSubmit={onSubmit}>
                 <input
                     type='email'
