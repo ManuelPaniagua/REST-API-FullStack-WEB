@@ -12,4 +12,8 @@ Currently, two official plugins are available:
  This frontend project assumes it connects to the backend server hosted at REST-APIs-FULLSTACK Repository. https://github.com/ManuelPaniagua/REST-API-FullStack/ Ensure the server is running and accessible during development and deployment.
 
  # Run
+ cd frontend-app
+
+ npm i
+ 
  npm run dev
